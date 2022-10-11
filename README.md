@@ -1,5 +1,5 @@
 
-# Elecciones Regionales y Municipales (ERM) 2018
+# Elecciones Regionales y Municipales (ERM) 2018 :bar_chart:
 
 Repositorio sobre resultados de las ERM. 
 
