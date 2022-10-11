@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 # Elecciones Regionales y Municipales (ERM) 2018
-=======
-# Elecciones Regionales y Municipales (ERM) 2022 :bar_chart:
->>>>>>> 82be6a37c95bde2241b7576f1795487e7dd05d43
-=======
-# Elecciones Regionales y Municipales (ERM) 2022 :bar_chart:
->>>>>>> 82be6a37c95bde2241b7576f1795487e7dd05d43
 
 Repositorio sobre resultados de las ERM. 
 
@@ -30,8 +23,5 @@ ONPE: *Resultados ERM 2018* (<https://www.onpe.gob.pe/elecciones/>)
 - Votos inválidos en la provincia de Lima
 - % de otos válidos de cada organización política al Municipio Metropolitano a nivel distrital
 - Organización ganadora al Municipio Metropolitano a nivel distrital
-=======
->>>>>>> 82be6a37c95bde2241b7576f1795487e7dd05d43
-
 
 
