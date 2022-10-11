@@ -17,7 +17,6 @@ CEPLAN: *Información para el planeamiento* (<https://www.ceplan.gob.pe/informac
 
 
 ONPE: *Resultados ERM 2018* (<https://www.onpe.gob.pe/elecciones/>)
-<<<<<<< HEAD
 
 - Ausentismo en la provincia de Lima
 - Votos inválidos en la provincia de Lima
