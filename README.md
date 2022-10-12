@@ -31,3 +31,5 @@ ONPE: *Resultados ERM 2018* (<https://www.onpe.gob.pe/elecciones/>)
 - *lima.xlsx*: Base con variables socidemográficas a nivel distrital limpia
 - *clean_data.Rmd*: Rmd con el proceso de limpieza
 
+
+Ver Github pages por aquí: <https://alexanderbenit7.github.io/ERM2018/>
