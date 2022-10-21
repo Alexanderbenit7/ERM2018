@@ -167,7 +167,7 @@ ggplot(data= ap_resh, aes(x=value, group=variable, fill=variable)) +
 
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank())  +
   
-  labs(title = "Concentración de votos por partido",
+  labs(title = " ",
        x = " ",
        y = " ") 
 ```
@@ -274,7 +274,7 @@ bar1 = data %>%
 ggplot(bar1, aes(x=clust, y=Cluster)) + 
   geom_bar(stat = "identity") +
   
-  labs(title = "Número de distritos por cada conglomerado",
+  labs(title = " ",
        x = " ",
        y = " ") +
 
