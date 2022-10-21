@@ -162,13 +162,21 @@ ap_resh = melt(ap, id=c("DISTRITO"))
 ```{r echo=FALSE,message=FALSE,warning=FALSE,eval=TRUE,fig.show='hold',fig.width=7,fig.height=5, fig.align="center"}
 ggplot(data= ap_resh, aes(x=value, group=variable, fill=variable)) +
     geom_density(adjust=1.5, alpha=.4, color = "gray", linetype = "dashed") +
-      scale_fill_manual(values=c("firebrick","dodgerblue2"), name = "") + theme_void() +
-      theme(legend.position="bottom")
+      scale_fill_manual(values=c("firebrick","dodgerblue2"), name = "")  +
+      theme(legend.position="bottom") +
+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank())  +
+  
+  labs(title = "Concentración de votos por partido",
+       x = " ",
+       y = " ") 
 ```
 
 
 
 ### 2. Técnicas de reducción de dimensiones
+
+Vamos a agrupar a los distritos en función a sus características sociodemográficas, siguiendo técnicas de reducción de dimensiones. Tenemos tres estrategias: PAM, jerárquica y basada en densidad.
 
 ```{r include=FALSE}
 data$tDISC = data$DISC_2020/data$POB_2020
@@ -186,10 +194,14 @@ set.seed(2019)
 g.dist = daisy(inputData, metric="gower")
 ```
 
+Hemos solicitado el número óptimo de clusters y son 3.
+
 ```{r include=FALSE}
 fviz_nbclust(inputData, pam,diss=g.dist,method = "gap_stat",k.max = 10,verbose = F) #Recomendación de num para PAM. Sale 3
 fviz_nbclust(inputData, hcut,diss=g.dist,method = "gap_stat",k.max = 10,verbose = F) #Sale 2 para jerarquico. Nos vamos a quedar con 3
 ```
+
+Nos quedamos con la estrategia de aglomeración jerarquica, bajo el algoritmo AGNES, que es el que ha demostrado mejor desempeño en el agrupamiento de casos.
 
 ```{r include=FALSE}
 #Hacemos los clusters:
@@ -231,6 +243,8 @@ data = merge(data, inputData, by = "DISTRITO")
 data$clust = factor(data$clust, levels = c(1:3), labels = c("Vulnerabilidad alta","Vulnerabilidad baja","Vulnerabilidad media"))
 ```
 
+Características de cada conglomerado:
+
 ```{r include=FALSE}
 summ_clust = data %>% 
   group_by(clust) %>%
@@ -247,6 +261,29 @@ summ_clust%>%
   kbl() %>%
   kable_minimal()
 ```
+
+Número de distritos por cada conglomerado:
+
+```{r include=FALSE}
+bar1 = data %>%
+  group_by(clust) %>%
+  summarise(Cluster = n())
+```
+
+```{r echo=FALSE,message=FALSE,warning=FALSE,eval=TRUE,fig.show='hold',fig.width=7,fig.height=5, fig.align="center"}
+ggplot(bar1, aes(x=clust, y=Cluster)) + 
+  geom_bar(stat = "identity") +
+  
+  labs(title = "Número de distritos por cada conglomerado",
+       x = " ",
+       y = " ") +
+
+    geom_text(aes(label=Cluster), size=4, vjust=1.5, hjust = 0.5, color="white") + 
+  
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank())
+```
+
+Análisis geoespacial de clusters:
 
 ```{r include=FALSE}
 #Juntamos información con el shape:
